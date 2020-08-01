@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Table, TableHead, TableCell, TableRow } from '@material-ui/core';
+
+import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 
 const demoContent = {
@@ -63,24 +67,26 @@ const Tables = () => {
             shrink: true,
           }}
         />
-        <Button className={styles.button} component ={Link} to={process.env.PUBLIC_URL +'/tables/booking/new'}>New Table</Button>
+        <Button className={styles.button} component ={Link} to={process.env.PUBLIC_URL +'/tables/booking/new'}>New Reservation</Button>
         <Button className={styles.button} component ={Link} to={process.env.PUBLIC_URL +'/tables/events/new'}>New Event</Button>
       </form>
 
       <Table>
         <TableHead>
-          <TableCell>Time</TableCell>
-          <TableCell>Table 1</TableCell>
-          <TableCell>Table 2</TableCell>
-          <TableCell>Table 3</TableCell>
-          <TableCell>Table 4</TableCell>
-          <TableCell>Table 5</TableCell>
-          <TableCell>Table 6</TableCell>
+          <TableRow>
+            <TableCell>Time</TableCell>
+            <TableCell>Table 1</TableCell>
+            <TableCell>Table 2</TableCell>
+            <TableCell>Table 3</TableCell>
+            <TableCell>Table 4</TableCell>
+            <TableCell>Table 5</TableCell>
+            <TableCell>Table 6</TableCell>
+          </TableRow>
         </TableHead>
         <TableBody>
           {schedul.map(row => (
             <TableRow key={row.time}>
-              <TableCell component="th" scope="row">
+              <TableCell>
                 {row.time}
               </TableCell>
               <TableCell>
@@ -106,54 +112,8 @@ const Tables = () => {
 
         </TableBody>
       </Table>
-
-
-
-      <ul>
-      
-        <li>
-          <Link to={process.env.PUBLIC_URL + '/tables/booking/:id'}>Tables number</Link>
-        </li>
-        <li>
-          <Link to={process.env.PUBLIC_URL + '/tables/booking/new'}>New booking</Link>
-        </li>
-        <li>
-          <Link to={process.env.PUBLIC_URL + '/tables/events/:id'}>Event number</Link>
-        </li>
-        <li>
-          <Link to={process.env.PUBLIC_URL + '/tables/events/new'}>New event</Link>
-        </li>
-      </ul>
     </div>
   );
 };
 
 export default Tables;
-
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import styles from './Tables.module.scss';
-
-// const Tables = () => {
-//   return (
-//     <div className={styles.component}>
-//       <h2>Tables view</h2>
-//       <ul>
-//         <li>
-//           <Link to={process.env.PUBLIC_URL + '/tables/booking/:id'}>Tables number</Link>
-//         </li>
-//         <li>
-//           <Link to={process.env.PUBLIC_URL + '/tables/booking/new'}>New booking</Link>
-//         </li>
-//         <li>
-//           <Link to={process.env.PUBLIC_URL + '/tables/events/:id'}>Event number</Link>
-//         </li>
-//         <li>
-//           <Link to={process.env.PUBLIC_URL + '/tables/events/new'}>New event</Link>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Tables;

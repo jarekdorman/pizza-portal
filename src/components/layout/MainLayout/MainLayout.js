@@ -4,9 +4,10 @@ import PageNav from '../PageNav/PageNav';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
+import styles from './MainLayout.module.scss';
 
 const MainLayout = ({ children }) => (
-  <div>
+  <div className={styles.component}>
     <AppBar>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
@@ -22,7 +23,7 @@ const MainLayout = ({ children }) => (
 );
 
 MainLayout.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export default MainLayout;

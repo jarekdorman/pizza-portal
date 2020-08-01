@@ -3,3 +3,19 @@
 .component {
   padding: $base-size;
 }
+
+.header {
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.table{
+  background-color: lighten(#345678, 40%);
+}
+
+.edit {
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-around;
+}

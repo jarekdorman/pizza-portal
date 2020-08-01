@@ -1,4 +1,3 @@
-  
 import React from 'react';
 import styles from './Kitchen.module.scss';
 import Paper from '@material-ui/core/Paper';
@@ -11,12 +10,12 @@ import Button from '@material-ui/core/Button';
 
 
 const demoContent = [
-  {id: '1', status: 'done', table: '4', task: 'prawns tagliatelle', amount: '1'},
-  {id: '2', status: 'preparing', table: '2', task: 'zio stefano\'s breakfast', amount: '2'},
-  {id: '3', status: 'done', table: '3', task: 'nonno alberto\'s salad', amount: '1'},
-  {id: '4', status: 'preparing', table: '5', task: 'nonna alba\'s pizza', amount: '1'},
-  {id: '5', status: 'ordered', table: '1', task: 'pizza salami bacon', amount: '2'},
-  {id: '6', status: 'ordered', table: '6', task: 'nonna alba\'s pizza', amount: '2'},
+  { id: '1', status: 'done', table: '4', task: 'prawns tagliatelle', amount: '1' },
+  { id: '2', status: 'preparing', table: '2', task: 'zio stefano\'s breakfast', amount: '2' },
+  { id: '3', status: 'done', table: '3', task: 'nonno alberto\'s salad', amount: '1' },
+  { id: '4', status: 'preparing', table: '5', task: 'nonna alba\'s pizza', amount: '1' },
+  { id: '5', status: 'ordered', table: '1', task: 'pizza salami bacon', amount: '2' },
+  { id: '6', status: 'ordered', table: '6', task: 'nonna alba\'s pizza', amount: '2' },
 ];
 
 const renderActions = (status) => {
@@ -43,16 +42,18 @@ const Kitchen = () => {
     <Paper className={styles.component}>
       <Table>
         <TableHead className={styles.head}>
-          <TableCell>Order ID</TableCell>
-          <TableCell>Status</TableCell>
-          <TableCell>Table NR</TableCell>
-          <TableCell>Task</TableCell>
-          <TableCell>Amount</TableCell>
+          <TableRow>
+            <TableCell>Order ID</TableCell>
+            <TableCell>Status</TableCell>
+            <TableCell>Table NR</TableCell>
+            <TableCell>Task</TableCell>
+            <TableCell>Amount</TableCell>
+          </TableRow>
         </TableHead>
         <TableBody>
           {demoContent.map(row => (
             <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
+              <TableCell>
                 {row.id}
               </TableCell>
               <TableCell>

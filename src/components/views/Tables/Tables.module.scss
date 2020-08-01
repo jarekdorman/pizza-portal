@@ -2,4 +2,26 @@
 
 .component {
   padding: $base-size;
+  margin: 60px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 300px;
+}
+
+.select{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.textField {
+  flex: 100%;
+  margin: 10px 0 15px;
+}
+
+.button {
+  flex: 100%;
+  margin: 5px 0 5px;
 }

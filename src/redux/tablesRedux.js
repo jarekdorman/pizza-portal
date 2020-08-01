@@ -2,22 +2,24 @@ import Axios from 'axios';
 import { api } from '../settings';
 
 /* selectors */
-export const getAll = ({tables}) => tables.data;
-export const getLoadingState = ({tables}) => tables.loading;
+export const getAll = ({ tables }) => tables.data;
+export const getLoadingState = ({ tables }) => tables.loading;
 
 /* action name creator */
 const reducerName = 'tables';
-const createActionName = name => `app/${reducerName}/${name}`;
+const createActionName = (name) => `app/${reducerName}/${name}`;
 
 /* action types */
 const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
+const UPDATE_STATUS = createActionName('UPDATE_STATUS');
 
 /* action creators */
-export const fetchStarted = payload => ({ payload, type: FETCH_START });
-export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
-export const fetchError = payload => ({ payload, type: FETCH_ERROR });
+export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
+export const fetchSuccess = (payload) => ({ payload, type: FETCH_SUCCESS });
+export const fetchError = (payload) => ({ payload, type: FETCH_ERROR });
+export const updateStatus = (payload) => ({ payload, type: UPDATE_STATUS });
 
 /* thunk creators */
 export const fetchFromAPI = () => {
@@ -35,6 +37,20 @@ export const fetchFromAPI = () => {
   };
 };
 
+export const update = (id, status) => {
+  return (dispatch) => {
+    dispatch(fetchStarted());
+
+    Axios
+      .get(`${api.url}/${api.tables}`)
+      .then(res => {
+        dispatch(updateStatus(id, status));
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
   switch (action.type) {
@@ -64,6 +80,16 @@ export default function reducer(statePart = [], action = {}) {
           active: false,
           error: action.payload,
         },
+      };
+    }
+    case UPDATE_STATUS: {
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: action.payload,
+        },
+        data: statePart.data.map (order => order.id === action.id ? {...order, status: action.status } : order ),
       };
     }
     default:
